@@ -40,7 +40,7 @@ def process_user_data(user_id: int, transactions: List[Dict]) -> Optional[pd.Dat
         
         # Calculate aggregates
         daily_stats = df.groupby('day_of_week')['amount'].agg(['mean', 'count'])
-        hourly_stats = df.groupby('hour')['amount'].mean()
+        hourly_stat = df.groupby('hour')['amount'].mean()
         
         # Merge stats back
         df = df.merge(daily_stats, on='day_of_week')
